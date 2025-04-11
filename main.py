@@ -1,11 +1,11 @@
 import pyshark
 import re
-
+from CustomThread import CustomThread
 
 capture = pyshark.FileCapture("./samples/evidence01.pcap", keep_packets=False)
 
 ip_identified = {}
-
+ip_extenernal_identified = []
 local_ips = []
 extenarl_ips = []
 
