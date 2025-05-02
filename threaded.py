@@ -1,16 +1,29 @@
 from geolocator import *
 from CustomThread import *
+from filter import filter_local_ips
+from scapy.all import *
 import pygeoip
 
-data = ['64.12.24.50', '64.12.25.91', '205.188.13.12', '64.236.68.246', "177.4.4.1"]
+
+data = []
 searching = []
 geo_data = pygeoip.GeoIP("GeoLiteCity.dat")
 
-def process(pkt):
 
-    
+def wrapper(pkt):
+    if IP in pkt:
+        # Filter out local ip addresses and as we cannot geolocate them
+        if filter_local_ips(pkt[IP].src):
+            if pkt[IP].src not in data:
+                process(pkt[IP].src)
+
+def process(ip):
     thread = CustomThread(target=getLocation, args=(ip, geo_data))
     thread.start()
     print(thread.join())
     pass    
 
+
+
+
+sniff(prn=wrapper) 
