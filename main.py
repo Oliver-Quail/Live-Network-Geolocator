@@ -2,6 +2,7 @@ import pyshark
 import re
 from CustomThread import CustomThread
 import pygeoip
+from geolocator import *
 
 geo_data = pygeoip.GeoIP("GeoLiteCity.dat")
 
@@ -31,13 +32,7 @@ print(local_ips)
 print(extenarl_ips)
 
 
-def getLocation(ip, location_data):
-    ip_data = location_data.record_by_name(ip)
-    ip_logitude = ip_data["longitude"]
-    ip_latitude = ip_data["latitude"]
-    ip_city = ip_data["city"]
-    print("Ip address location: (%3f, %3f)", (ip_latitude, ip_logitude) )
-    pass
+
 
 
 getLocation(extenarl_ips[0], geo_data)
