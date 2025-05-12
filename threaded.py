@@ -15,6 +15,7 @@ def wrapper(pkt):
         # Filter out local ip addresses and as we cannot geolocate them
         if filter_local_ips(pkt[IP].src):
             if pkt[IP].src not in data:
+                data.append(pkt[IP].src)
                 process(pkt[IP].src)
 
 def process(ip):
