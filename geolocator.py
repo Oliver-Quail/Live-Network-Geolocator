@@ -9,5 +9,5 @@ def getLocation(ip, location_data):
     ip_logitude = ip_data["longitude"]
     ip_latitude = ip_data["latitude"]
     ip_city = ip_data["city"]
-    return(("%s address location: (%3f, %3f)")%(ip, ip_latitude, ip_logitude) )
+    return(("%s,%3f,%3f")%(ip, ip_latitude, ip_logitude) )
     

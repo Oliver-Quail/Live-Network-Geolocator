@@ -23,7 +23,12 @@ def wrapper(pkt):
 def process(ip):
     thread = CustomThread(target=getLocation, args=(ip, geo_data))
     thread.start()
-    print(thread.join())
+    data = thread.join()
+    print(data)
+    data = str(data)
+    data = data.split(",")
+    handler.add(data[0],data[1],data[2])
+
     pass    
 
 
