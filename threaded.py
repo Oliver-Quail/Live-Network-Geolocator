@@ -3,11 +3,14 @@ from CustomThread import *
 from filter import filter_local_ips
 from scapy.all import *
 import pygeoip
-
+import sqlite3
 
 data = []
 searching = []
 geo_data = pygeoip.GeoIP("GeoLiteCity.dat")
+
+
+
 
 
 def wrapper(pkt):
