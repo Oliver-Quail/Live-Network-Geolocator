@@ -1,3 +1,7 @@
 .venv/
 /samples
 __pycache__
+
+analysis.db
+file.kml
+data.kml

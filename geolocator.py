@@ -4,7 +4,7 @@ def getLocation(ip, location_data):
     try:
         ip_data["longitude"]
     except TypeError:
-        return ("%s not avalibable in dataset")%(ip)
+        return "a"
 
     ip_logitude = ip_data["longitude"]
     ip_latitude = ip_data["latitude"]

@@ -24,12 +24,12 @@ def process(ip):
     thread = CustomThread(target=getLocation, args=(ip, geo_data))
     thread.start()
     data = thread.join()
+    if data == "a":
+        return
     print(data)
     data = str(data)
     data = data.split(",")
-    handler.add(data[0],data[1],data[2])
-
-    pass    
+    handler.add(data[0],data[1],data[2])    
 
 
 

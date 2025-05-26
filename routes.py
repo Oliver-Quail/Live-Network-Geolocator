@@ -1,6 +1,6 @@
 from . import app
 import sqlite3
-from flask import request
+from flask import request, send_file
 
 class InterceptRequestMiddleware:
     def __init__(self, wsgi_app):
@@ -21,6 +21,10 @@ def ind():
 @app.route("/start", methods=["GET"])
 def start():
     pass
+
+@app.route("/data", methods=["GET"])
+def file():
+    return send_file("data.kml", as_attachment=True)
 
 
 
